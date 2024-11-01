@@ -4,7 +4,7 @@
 
 header {
   position: relative;
-  background-image: url("/images/beach.avif");
+  background-image: url("/images/beach.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -28,7 +28,7 @@ header > * {
 }
 @media (max-width: 768px) {
   header {
-    background-image: url("/images/map.avif");
+    background-image: url("/images/map.jpg");
     background-positioin: center;
   }
 }

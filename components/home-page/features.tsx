@@ -10,7 +10,7 @@ export default function Features() {
       <div className="flex flex-col md:flex-row space-y-8 md:space-y-0 space-x-4">
         <div className=" md:w-1/2">
           <Image
-            src="/images/map-2.avif"
+            src="/images/map-2.jpg"
             alt="feature1"
             width={1000}
             height={1000}
@@ -30,7 +30,7 @@ export default function Features() {
       <div className="flex flex-col md:flex-row-reverse  space-y-8 md:space-y-0 space-x-4">
         <div className=" md:w-1/2">
           <Image
-            src="/images/map-3.avif"
+            src="/images/map-3.jpg"
             alt="feature2"
             width={1000}
             height={1000}
