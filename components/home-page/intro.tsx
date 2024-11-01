@@ -9,7 +9,7 @@ export default function Intro() {
       "
     >
       <div className="md:absolute md:left-2 contrast-75 ">
-        <Image src="/images/canon.avif" width={700} height={700} alt="sleep " />
+        <Image src="/images/canon.jpg" width={700} height={700} alt="sleep " />
       </div>
       <div className="flex flex-col md:z-2 md:absolute md:right-0 md:top-[350px] bg-white items-center space-y-8 p-8 md:p-16">
         <h2 className="text-4xl md:text-5xl md:text-left text-center max-w-md uppercase">
