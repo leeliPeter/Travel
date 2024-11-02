@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import Nav from "@/components/home-page/nav";
+import AuthProvider from "@/components/providers/auth-provider";
 
 export const metadata: Metadata = {
   title: "Travel",
@@ -15,10 +16,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <div className="relative">
-          <Nav />
-          {children}
-        </div>
+        <AuthProvider>
+          <div className="relative">
+            <Nav />
+            {children}
+          </div>
+        </AuthProvider>
       </body>
     </html>
   );

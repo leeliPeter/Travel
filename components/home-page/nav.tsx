@@ -3,11 +3,14 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import Member from "@/components/home-page/member";
+import { useSession, signIn, signOut } from "next-auth/react";
+import Image from "next/image";
 
 export default function Nav() {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
   const [showMember, setShowMember] = useState<boolean>(false);
   const [memberMode, setMemberMode] = useState<"login" | "signup">("login");
+  const { data: session } = useSession();
 
   const toggleMenu = (): void => {
     setIsMenuOpen(!isMenuOpen);
@@ -23,6 +26,7 @@ export default function Nav() {
     { href: "/", label: "Explore" },
     { href: "/", label: "My Trips" },
   ];
+
   return (
     <div className="absolute z-10 w-full top-0 left-0 right-0">
       {showMember && (
@@ -49,18 +53,39 @@ export default function Nav() {
           </div>
           {/* right */}
           <div className="hidden md:flex items-center mt-2 space-x-10">
-            <Button
-              className="bg-white rounded-full hover:text-white text-black"
-              onClick={() => handleMemberOpen("signup")}
-            >
-              Sign Up
-            </Button>
-            <Button
-              className="bg-black hover:bg-white hover:text-black px-4 py-2 rounded-full text-white"
-              onClick={() => handleMemberOpen("login")}
-            >
-              Login
-            </Button>
+            {session ? (
+              <>
+                <Image
+                  src={session.user?.image || ""}
+                  alt="user avatar"
+                  width={32}
+                  height={32}
+                  className="rounded-full"
+                />
+                <p className="text-white">{session.user?.email}</p>
+                <Button
+                  className="bg-black hover:bg-white hover:text-black px-4 py-2 rounded-full text-white"
+                  onClick={() => signOut()}
+                >
+                  Sign Out
+                </Button>
+              </>
+            ) : (
+              <>
+                <Button
+                  className="bg-white rounded-full hover:text-white text-black"
+                  onClick={() => handleMemberOpen("signup")}
+                >
+                  Sign Up
+                </Button>
+                <Button
+                  className="bg-black hover:bg-white hover:text-black px-4 py-2 rounded-full text-white"
+                  onClick={() => handleMemberOpen("login")}
+                >
+                  Login
+                </Button>
+              </>
+            )}
           </div>
         </div>
       </div>

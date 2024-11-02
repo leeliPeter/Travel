@@ -15,6 +15,7 @@ import {
   FormItem,
   FormMessage,
 } from "@/components/ui/form";
+import { signIn } from "next-auth/react";
 
 const formSchema = z
   .object({
@@ -195,6 +196,11 @@ export default function Member({
                     variant="outline"
                     type="button"
                     className="h-11 sm:h-12 hover:bg-primary/5 hover:border-primary transition-all duration-200 hover:-translate-y-0.5 text-sm sm:text-base"
+                    onClick={() => {
+                      setIsLoading(true);
+                      signIn("google", { redirect: false, callbackUrl: "/" });
+                    }}
+                    disabled={isLoading}
                   >
                     <FaGoogle className="mr-2 h-4 w-4 sm:h-5 sm:w-5" />
                     Google
@@ -203,6 +209,11 @@ export default function Member({
                     variant="outline"
                     type="button"
                     className="h-11 sm:h-12 hover:bg-primary/5 hover:border-primary transition-all duration-200 hover:-translate-y-0.5 text-sm sm:text-base"
+                    onClick={() => {
+                      setIsLoading(true);
+                      signIn("github", { redirect: false, callbackUrl: "/" });
+                    }}
+                    disabled={isLoading}
                   >
                     <FaGithub className="mr-2 h-4 w-4 sm:h-5 sm:w-5" />
                     Github
